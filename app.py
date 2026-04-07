@@ -505,13 +505,15 @@ def make_predictor():
             # ── Left: sliders ──────────────────────────────────────────────────
             html.Div([
                 stitle('Player Statistics Input'),
+                html.Div('Adjust sliders to match a forward\'s season stats, then click Predict.',
+                         style={'fontSize':'11px','color':MUTED,'marginBottom':'20px'}),
                 *[slider_row(f) for f in MODEL_FEATURES],
                 html.Button('⚡  Predict xG', id='btn-predict',
                     style={'backgroundColor':A1,'color':'white','border':'none',
                            'borderRadius':'8px','padding':'12px 28px','fontSize':'14px',
                            'fontWeight':'700','cursor':'pointer','width':'100%','marginTop':'4px',
                            'boxShadow':f'0 4px 18px {hex_rgba(A1,0.35)}'}),
-            ], style={**CARD_S,'flex':'1.3','maxHeight':'820px','overf  lowY':'auto'}),
+            ], style={**CARD_S,'flex':'1.3','maxHeight':'820px','overflowY':'auto'}),
 
             # ── Right: results ─────────────────────────────────────────────────
             html.Div([
@@ -549,6 +551,8 @@ app = dash.Dash(__name__, external_stylesheets=[
     dbc.themes.BOOTSTRAP,
     'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap',
 ])
+
+server = app.server
 
 navbar = html.Div([
     html.Div([
