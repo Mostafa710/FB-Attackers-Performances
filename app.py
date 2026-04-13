@@ -313,7 +313,7 @@ def fig_league_radar():
         raw = avg[avg['comp']==lg].iloc[0]
         hover = [f'<b>{lg}</b><br>{lbls[i]}: <b>{raw[cols[i]]:.2f}</b>' for i in range(len(cols))]+[f'<b>{lg}</b>']
         fig.add_trace(go.Scatterpolar(r=[row[c] for c in cc], theta=cl,
-            fill='toself', fillcolor=color, opacity=0.13,
+            fill='toself', fillcolor=color, opacity=0.5,
             line=dict(color=color,width=2.2), name=lg,
             text=hover, hovertemplate='%{text}<extra></extra>'))
     fig.update_layout(paper_bgcolor='rgba(0,0,0,0)', font=dict(color=TEXT,size=10),
@@ -556,12 +556,12 @@ server = app.server
 
 navbar = html.Div([
     html.Div([
-        html.Span('⚽', style={'fontSize':'22px','marginRight':'10px'}),
+        html.Span('⚽', style={'fontSize':'30px','marginRight':'10px'}),
         html.Div([
             html.Div('FB Players Performance',
-                     style={'fontSize':'16px','fontWeight':'700','color':TEXT}),
+                     style={'fontSize':'17px','fontWeight':'700','color':TEXT}),
             html.Div('Top 5 European Leagues  ·  2017–2024',
-                     style={'fontSize':'11px','color':MUTED}),
+                     style={'fontSize':'12px','color':MUTED}),
         ]),
     ], style={'display':'flex','alignItems':'center'}),
     html.Div([
